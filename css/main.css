@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+
+* {
+	transition: 0.5s;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Roboto, sans-serif;
+	background: #ecebf6;
+}
+
+.page-wraper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.content {
+	border: 0px solid red;
+	width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.window-reg-wraper {
+	  display: flex;
+    align-items: center;
+    align-content: center;
+		justify-content: center;
+}
+
+.w-fon {
+  display: none;
+	background: #000000;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 999;
+	opacity: 0.6;
+}
+
+.window-reg {
+ display: none;
+	text-align: center;
+	height: 615px;
+	width: 350px;
+	background: white;
+	border: 1px solid #86afe1;
+	margin: 315px auto;
+	z-index: 1000;
+	position: fixed;
+}
+
+.window-reg .header {
+	font-size: 21px;
+	color: #363636;
+	margin: 10px auto;
+}
+
+.window-reg > form {
+	margin: 30px auto;
+}
+
+.window-reg > form > div > input {
+	font-size: 17px;
+	padding: 4px 5px 3px 15px;
+	border: 2px solid #86afe1;
+	height: 23px;
+	width: 200px;
+	border-radius: 30px;
+	margin-bottom: 10px;
+	outline: none;
+	color: #557cac;
+}
+
+.window-reg > form > div > p > label {
+	font-size: 19px;
+	margin-bottom: 10px;
+	color: #373737;
+}
+
+.window-reg > form > div > p  {
+	margin: 10px auto;
+}
+
+.window-reg > form > input {
+	padding-top: 1px;
+	cursor: pointer;
+	margin: 30px auto;
+	font-size: 16px;
+	width: 150px;
+	height: 43px;
+	border: 2px solid #f667aa;
+	background: white;
+	border-radius: 50px;
+	color: #f667aa;
+}
+
+.window-reg > form > input:hover {
+	background: #f667aa;
+	transition: 0.5s;
+	color: #fff;
+}
+
+.window-reg > i {
+  font-size: 30px;
+	color: #fff;
+	position: absolute;
+	margin: 10px 620px;
+	z-index: 1100;
+	cursor: pointer;
+}
+
+/* Exit window */
+
+.window-exit-wraper {
+	  display: flex;
+    align-items: center;
+    align-content: center;
+		justify-content: center;
+}
+
+.window-exit {
+  display: none;
+	text-align: center;
+	height: 400px;
+	width: 350px;
+	background: white;
+	border: 1px solid #86afe1;
+	margin: 315px auto;
+	z-index: 1000;
+	position: fixed;
+}
+
+.window-exit .header {
+	font-size: 22px;
+	color: #363636;
+	margin: 10px auto;
+}
+
+.window-exit > form {
+	margin: 30px auto;
+}
+
+.window-exit > form > div > input {
+	font-size: 17px;
+	padding: 4px 5px 3px 15px;
+	border: 2px solid #86afe1;
+	height: 23px;
+	width: 200px;
+	border-radius: 30px;
+	margin-bottom: 10px;
+	outline: none;
+	color: #557cac;
+}
+
+.window-exit > form > div > p > label {
+	font-size: 19px;
+	margin-bottom: 10px;
+	color: #373737;
+}
+
+.window-exit > form > div > p  {
+	margin: 10px auto;
+}
+
+.window-exit> form > input {
+	padding-top: 1px;
+	cursor: pointer;
+	margin: 30px auto;
+	font-size: 16px;
+	width: 100px;
+	height: 43px;
+	border: 2px solid #f667aa;
+	background: white;
+	border-radius: 50px;
+	color: #f667aa;
+}
+
+.window-exit > form > input:hover {
+	background: #f667aa;
+	transition: 0.5s;
+	color: #fff;
+}
+
+.window-exit > i {
+  font-size: 30px;
+	color: #fff;
+	position: absolute;
+	margin: -100px 620px;
+	z-index: 1100;
+	cursor: pointer;
+}
+
+.reg-a {
+	font-size: 19px;
+	margin: -30px auto;
+  color: #373737;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.reg-a:hover {
+	color: black;
+	transition: .5s;
+}

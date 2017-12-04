@@ -1,0 +1,396 @@
+.main-content {
+	width: 840px;
+	height: 2000px;
+	background: white;
+	position: absolute;
+}
+
+/* Slider */
+
+.main-slider {
+    outline: none;
+}
+
+.main-slider > div {
+    outline: none;
+}
+
+.slider-wraper {
+	width: 700px;
+	height: 425px;
+	margin: 30px auto;
+	border: 2px solid #86afe1;
+	border-radius: 10px;
+}
+
+.slide > img {
+	width: 700px;
+	height: 425px;
+	border-radius: 8px 8px 10px 10px;
+}
+
+.text-bg {
+	background: black;
+	width: 700px;
+    height: 90px;
+    opacity: 0.7;
+    position: absolute;
+    margin: -90px 0px;
+    text-align: center;
+    border-radius: 0 0 7px 7px;
+}
+
+.text-bg > p {
+	color: #fff;
+	margin: 15px auto;
+	width: 500px;
+	font-size: 21px;
+}
+
+.slick-dots li button:before {
+   background: white;
+   content: '';
+   border-radius: 50%;
+   color: white;
+   opacity: 1;
+}
+
+
+.slick-dots li.slick-active button:before {
+	content: '';
+	background: #f667aa;
+}
+
+
+/* News */
+
+.news {
+	width: 840px;
+	height: 500px;
+}
+
+.news_1 {
+	height: 193px;
+	width: 330px;
+	border: 2px solid #f667aa;
+	border-radius: 15px;
+	position: absolute;
+	margin: 15px 70px;
+	text-align: center;
+	background: url(/img/news_1.jpg);
+	background-size: 330px 200px;
+}
+
+.news_1 > p {
+	margin: 207px auto;
+	font-size: 20px;
+}
+
+.news_2 {
+	height: 193px;
+	width: 330px;
+	border: 2px solid #86afe1;
+	border-radius: 15px;
+	position: absolute;
+	margin: 15px 435px;
+	text-align: center;
+    background: url(/img/news_2.jpg);
+	background-size: 330px 205px;
+}
+
+.news_2 > p {
+	margin: 207px auto;
+	font-size: 20px;
+}
+
+.news_3 {
+	height: 193px;
+	width: 330px;
+	border: 2px solid #86afe1;
+	border-radius: 15px;
+	position: absolute;
+	margin: 310px 70px;
+	text-align: center;
+	background: url(/img/news_3.jpg);
+	background-size: 330px 200px;
+}
+
+.news_3 > p {
+	margin: 207px auto;
+	font-size: 20px;
+}
+
+.news_4 {
+	height: 193px;
+	width: 330px;
+	border: 2px solid #f667aa;
+	border-radius: 15px;
+	position: absolute;
+	margin: 310px 435px;
+	text-align: center;
+	background: url(/img/news_4.jpg);
+	background-size: 330px 200px;
+}
+
+.news_4 > p {
+	margin: 207px auto;
+	font-size: 20px;
+}
+
+.news > button {
+	width: 190px;
+	height: 50px;
+	border: 2px solid #f667aa;
+	background: white;
+	margin: 590px 325px;
+	border-radius: 30px;
+	color: #f667aa;
+	font-size: 18px;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.news > button:hover {
+	background: #f667aa;
+	transition: 0.5s;
+	color: white;
+}
+
+/* Secind slider */
+
+.second-slider-wraper {
+	margin: 230px 0px;
+	height: 150px;
+}
+
+.second-slider {
+	width: 700px;
+	margin: 0px auto;
+}
+
+.s-slide {
+	height: 120px;
+	width: 120px;
+	border: 0px solid #86afe1;
+	outline: none;
+}
+
+.s-slide > div {
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
+	margin: 0px auto;
+}
+
+.circle_1 > i {
+	color: #86afe1;
+	font-size: 33px;
+	position: absolute;
+	margin: 20px 43px;
+}
+
+.circle_1 > p {
+	color: #86afe1;
+	position: absolute;
+	margin: 33px 48px;
+	font-size: 12px;
+	width: 100px;
+}
+
+.circle_1 .desc {
+	font-size: 16px;
+	margin: 60px 9px;
+	line-height: 1.2;
+	text-align: center;
+}
+
+.circle_1 {
+	border: 2px solid #86afe1;
+	cursor: pointer;
+}
+
+.circle_2 {
+	border: 2px solid #f667aa;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_2 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/apple.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 15px 39px;
+}
+
+.circle_2 > p {
+	color: #f667aa;
+	margin: 60px auto;
+	line-height: 1.2;
+}
+
+.circle_3 {
+	border: 2px solid #86afe1;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_3 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/baby.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 39px;
+}
+
+.circle_3 > p {
+	color: #86afe1;
+	margin: 60px auto;
+	line-height: 1.2;
+}
+
+.circle_4 {
+	border: 2px solid #f667aa;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_4 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/baby-abc-toy.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 41px;
+}
+
+.circle_4 > p {
+	color: #f667aa;
+	margin: 61px auto;
+	line-height: 1.2;
+}
+
+
+.circle_5 {
+	border: 2px solid #86afe1;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_5 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/car.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 41px;
+}
+
+.circle_5 > p {
+	color: #86afe1;
+	margin: 61px auto;
+	line-height: 1.2;
+}
+
+.circle_6 {
+	border: 2px solid #f667aa;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_6 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/puzzle.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 38px;
+}
+
+.circle_6 > p {
+	color: #f667aa;
+	margin: 63px auto;
+	line-height: 1.2;
+}
+
+.circle_7 {
+	border: 2px solid #86afe1;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_7 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/spinner.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 38px;
+}
+
+.circle_7 > p {
+	color: #86afe1;
+	margin: 63px auto;
+	line-height: 1.2;
+}
+
+.circle_8 {
+	border: 2px solid #f667aa;
+	text-align: center;
+	cursor: pointer;
+}
+
+.circle_8 .icon {
+	height: 40px;
+	width: 40px;
+	background: url(/img/icons/sleep.svg);
+	background-size: 40px;
+	position: absolute;
+	margin: 17px 38px;
+}
+
+.circle_8 > p {
+	color: #f667aa;
+	margin: 67px auto;
+	line-height: 1.2;
+}
+
+/* About us */
+
+.about-us {
+	margin: -170px auto;
+	text-align: center;
+}
+
+.about-us .header {
+	color: #417DE1;
+	font-size: 25px;
+	margin: 0px auto;
+}
+
+.a-u-content {
+	width: 700px;
+	margin: 20px auto;
+	color: #3D3D3D
+}
+
+.about-us > button {
+	width: 105px;
+	height: 45px;
+	border: 2px solid #f667aa;
+	background: white;
+	margin: 11px 325px;
+	border-radius: 30px;
+	color: #f667aa;
+	font-size: 18px;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.about-us > button:hover {
+	background: #f667aa;
+	transition: 0.5s;
+	color: white;
+}

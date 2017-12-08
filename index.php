@@ -1,3 +1,101 @@
+<?php
+
+require "db.php";
+
+$data = $_POST;
+
+if ( isset($data['do_signup']) ) {
+	// тут реєструєм
+
+	$errors = array();
+	if ( trim($data['login_signup']) == '' ) {
+		$errors[] = 'Введіть логін!';
+	}
+
+	if ( trim($data['name_signup']) == '' ) {
+		$errors[] = "Введіть ім'я!";
+	}
+
+	if ( trim($data['surname_signup']) == '' ) {
+		$errors[] = "Введіть прізвище!";
+	}
+
+	if ( $data['password_signup'] == '' ) {
+		$errors[] = "Введіть пароль!";
+	}
+
+	if ( trim($data['email_signup']) == '' ) {
+		$errors[] = "Введіть Email!";
+	}
+
+	if ( R::count('users', "login = ?", array($data['login_signup'])) > 0 )  {
+		$errors[] = 'Користувач з таким логіном вже існує!';
+	}
+
+	if ( R::count('users', "email = ?", array($data['email_signup'])) > 0 )  {
+		$errors[] = 'Користувач з таким Email вже існує!';
+	}
+
+  if ( empty($errors) ) {
+		$user = R::dispense('users');
+		$user->login = $data['login_signup'];
+		$user->name = $data['name_signup'];
+		$user->surname = $data['surname_signup'];
+		$user->password = password_hash($data['password_signup'], PASSWORD_DEFAULT);
+		$user->email = $data['email_signup'];
+		R::store($user);
+		echo "ok";
+	}
+
+	else {
+		echo array_shift($errors);
+	}
+}
+
+// Login
+
+if ( isset($data['do_login']) ) {
+	$user = R::findOne('users', 'login = ?', array($data['login']));
+	if ( $user ) {
+
+	if ( password_verify($data['password'], $user->password) ) {
+		$_SESSION['logged_user'] = $user;
+     echo "ok";
+	} else {
+		$errors[] = 'Пароль введений невірно!';
+	}
+
+	}
+
+	else {
+		$errors[] = 'Користувача з таким логіном не знайднно!';
+	}
+
+	if ( ! empty($errors) ) {
+		  echo array_shift($errors);
+	}
+
+}
+
+ ?>
+<?php
+ if ( isset($_SESSION['logged_user']) ) : ?>
+
+<div class="notes">
+
+Авторизований. Привіт, <?php echo $_SESSION['logged_user']->name; ?>!
+<hr>
+<br>
+<a href="/logout.php">Вийти</a>
+</div>
+<?php else : ?>
+	<div class="notes">
+	Неавторизований
+	<br>
+  <a href="/index.php">Головна</a>
+</div>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,35 +113,35 @@
 </head>
 <body>
 <div class="w-fon"></div>
-	<div class="window-reg-wraper">
-		<div class="window-reg">
+	<div class="window-signup-wraper">
+		<div class="window-signup">
 
-			<i class="fa fa-times" aria-hidden="true" id="reg-close"></i>
+			<i class="fa fa-times" aria-hidden="true" id="signup-close"></i>
 
 			<p class="header">Реєстрація</p>
 
-      <form action="" class="registration">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="signup" method="POST">
 
 				<div class="inf">
 
 				<p><label for="">Логін:</label></p>
-				<input type="login" name="login_reg">
+				<input type="login" name="login_signup" value="<?php echo $data['login_signup']; ?>">
 
 				<p><label for="">Ваше Ім'я:</label></p>
-        <input type="text" name="login_reg">
+        <input type="text" name="name_signup" value="<?php echo $data['name_signup']; ?>">
 
 				<p><label for="">Ваше прізвище:</label></p>
-				<input type="text" name="login_reg">
+				<input type="text" name="surname_signup" value="<?php echo $data['surname_signup']; ?>">
 
 				<p><label for="">Пароль:</label></p>
-				<input type="password" name="login_reg">
+				<input type="password" name="password_signup" value="<?php echo $data['password_signup']; ?>">
 
 				<p><label for="">Email:</label></p>
-				<input type="email" name="login_reg">
+				<input type="email" name="email_signup" value="<?php echo $data['email_signup']; ?>">
 
 				</div>
 
-				<input type="submit" name="submit_reg" value="Зареєструватися">
+				<input type="submit" name="do_signup" value="Зареєструватися">
 
       </form>
 
@@ -59,7 +157,7 @@
 
 			<p class="header">Вхід</p>
 
-			<form action="" class="exit">
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="exit" method="POST">
 
 				<div class="inf">
 
@@ -71,11 +169,11 @@
 
 				</div>
 
-				<input type="submit" name="submit_reg" value="Ввійти">
+				<input type="submit" name="do_login" value="Ввійти">
 
 			</form>
 
-      <p class="reg-a">Реєстрація</p>
+      <p class="signup-a">Реєстрація</p>
 
 		</div>
 	</div>
@@ -106,8 +204,8 @@
 
        <p class="description">Все про дітей, двійнят, трійнят</p>
 
-       <div class="exit-reg">
-        <span class="exit">Вхід</span> | <span class="reg">Реєстрація</span>
+       <div class="exit-signup">
+        <span class="exit">Вхід</span> | <span class="signup">Реєстрація</span>
        </div>
 
   </header>
@@ -239,7 +337,7 @@
 
 				 <div class="voting">
 
-					<p class="header">Голосування</p>
+					<p class="header">Опитування</p>
 					<p class="sub-header">Якого віку ваша наймолодша <br> дитина?</p>
 
             <form method="post">
@@ -272,6 +370,8 @@
 				 <button>Надіслати</button>
 
             </form>
+
+						<p class="more">Інші опитування</p>
 
 				 </div>
 

@@ -10,12 +10,12 @@ $('#exit-close').click( function () {
 
 
 
-$('.reg').click( function () {
+$('.signup').click( function () {
 	$('.w-fon').show();
-	$('.window-reg').show();
+	$('.window-signup').show();
 });
 
-$('#reg-close').click( function () {
+$('#signup-close').click( function () {
 	$('.w-fon').hide();
-	$('.window-reg').hide();
+	$('.window-signup').hide();
 });

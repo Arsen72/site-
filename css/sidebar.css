@@ -1,8 +1,8 @@
 .sidebar {
-	width: 310px;
+	width: 275px;
 	height: 2000px;
 	background: white;
-	margin: 0px 860px;
+	margin: 0px 775px;
 	position: absolute;
 }
 
@@ -10,24 +10,24 @@
 
 .my-profile .header {
 	text-align: center;
-	font-size: 22px;
+	font-size: 21px;
 	margin: 20px auto;
 }
 
 .user-ava {
 	position: relative;
-	height: 110px;
-	width: 110px;
+	height: 105px;
+	width: 105px;
 	border-radius: 50%;
 	background: url(/img/user-ava.jpg) no-repeat;
-	background-size: 150px;
+	background-size: 140px;
 	background-position: top;
 	margin: 25px auto;
 }
 
 .user-name {
 	color: #f667aa;
-	font-size: 21px;
+	font-size: 20px;
 	text-align: center;
 	position: relative;
 	margin: -10px auto;
@@ -42,24 +42,26 @@
 	text-align: center;
 	margin: 7px auto;
 	color: #72696d;
+	font-size: 15px;
 }
 
 .ind {
-	height: 19px;
-	width: 19px;
+	height: 18px;
+	width: 18px;
 	border-radius: 50%;
 	border: 1px solid #86afe1;
 	color: #f667aa;
 	text-align: center;
 	position: absolute;
-	margin: -27px 237px;
+	margin: -27px 213px;
 	padding-bottom: 1px;
 	padding-left: 1px;
+	font-size: 15px;
 }
 
 .articles .header {
 	text-align: center;
-	font-size: 22px;
+	font-size: 21px;
 	margin: 40px auto;
 }
 
@@ -72,34 +74,34 @@
 	list-style: none;
 	margin-bottom: 15px;
 	color: #6f99cd;
-	font-size: 19px;
+	font-size: 17px;
 }
 
 .ind-article_1 {
-	height: 20px;
-	width: 30px;
+	height: 18px;
+	width: 26px;
 	border-radius: 15px;
 	border: 1px solid #86afe1;
 	color: #f667aa;
 	text-align: center;
 	position: absolute;
-	margin: -21px 165px;
+	margin: -20px 145px;
 	font-size: 17px;
 }
 
 .ind-article_1 > p {
-	margin: -2px auto;
+	margin: -3px auto;
 }
 
 .ind-article_2 , .ind-article_3 {
-	height: 20px;
-	width: 30px;
+	height: 18px;
+	width: 26px;
 	border-radius: 15px;
 	border: 1px solid #86afe1;
 	color: #f667aa;
 	text-align: center;
 	position: absolute;
-	margin: -21px 110px;
+	margin: -21px 95px;
 	font-size: 17px;
 }
 
@@ -108,14 +110,14 @@
 }
 
 .ind-article_4 , .ind-article_5 {
-	height: 20px;
-	width: 30px;
+	height: 18px;
+	width: 26px;
 	border-radius: 15px;
 	border: 1px solid #86afe1;
 	color: #f667aa;
 	text-align: center;
 	position: absolute;
-	margin: -21px 80px;
+	margin: -21px 70px;
 	font-size: 17px;
 }
 
@@ -124,14 +126,14 @@
 }
 
 .ind-article_6 {
-	height: 20px;
-	width: 30px;
+	height: 18px;
+	width: 26px;
 	border-radius: 15px;
 	border: 1px solid #86afe1;
 	color: #f667aa;
 	text-align: center;
 	position: absolute;
-	margin: -21px 150px;
+	margin: -21px 130px;
 	font-size: 17px;
 }
 
@@ -141,7 +143,7 @@
 
 .voting .header {
 	text-align: center;
-	font-size: 22px;
+	font-size: 21px;
 	margin: 310px auto;
 }
 
@@ -196,11 +198,11 @@
 }
 
 .voting > form > button {
-	width: 115px;
-	height: 45px;
+	width: 120px;
+	height: 43px;
 	border: 2px solid #86afe1;
 	background: white;
-	margin: 11px 50px;
+	margin: 11px 27px;
 	border-radius: 30px;
 	color: #86afe1;
 	font-size: 17px;
@@ -212,4 +214,17 @@
 	background: #86afe1;
 	transition: 0.5s;
 	color: white;
+}
+
+.voting .more {
+	font-size: 16px;
+	position: absolute;
+	margin: 620px 73px;
+	width: 300px;
+	color: #f667aa;
+}
+
+.voting .more:hover {
+	color: #d73d85;
+	cursor: pointer;
 }

@@ -20,13 +20,13 @@ body {
 
 .content {
 	border: 0px solid red;
-	width: 1170px;
+	width: 1050px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
 }
 
-.window-reg-wraper {
+.window-signup-wraper {
 	  display: flex;
     align-items: center;
     align-content: center;
@@ -43,7 +43,7 @@ body {
 	opacity: 0.6;
 }
 
-.window-reg {
+.window-signup {
  display: none;
 	text-align: center;
 	height: 615px;
@@ -55,17 +55,17 @@ body {
 	position: fixed;
 }
 
-.window-reg .header {
+.window-signup .header {
 	font-size: 21px;
 	color: #363636;
 	margin: 10px auto;
 }
 
-.window-reg > form {
+.window-signup > form {
 	margin: 30px auto;
 }
 
-.window-reg > form > div > input {
+.window-signup > form > div > input {
 	font-size: 17px;
 	padding: 4px 5px 3px 15px;
 	border: 2px solid #86afe1;
@@ -77,17 +77,17 @@ body {
 	color: #557cac;
 }
 
-.window-reg > form > div > p > label {
+.window-signup > form > div > p > label {
 	font-size: 19px;
 	margin-bottom: 10px;
 	color: #373737;
 }
 
-.window-reg > form > div > p  {
+.window-signup > form > div > p  {
 	margin: 10px auto;
 }
 
-.window-reg > form > input {
+.window-signup > form > input {
 	padding-top: 1px;
 	cursor: pointer;
 	margin: 30px auto;
@@ -100,13 +100,13 @@ body {
 	color: #f667aa;
 }
 
-.window-reg > form > input:hover {
+.window-signup > form > input:hover {
 	background: #f667aa;
 	transition: 0.5s;
 	color: #fff;
 }
 
-.window-reg > i {
+.window-signup > i {
   font-size: 30px;
 	color: #fff;
 	position: absolute;
@@ -146,7 +146,7 @@ body {
 	margin: 30px auto;
 }
 
-.window-exit > form > div > input {
+.window-exit > form > div > input {;
 	font-size: 17px;
 	padding: 4px 5px 3px 15px;
 	border: 2px solid #86afe1;
@@ -196,7 +196,7 @@ body {
 	cursor: pointer;
 }
 
-.reg-a {
+.signup-a {
 	font-size: 19px;
 	margin: -30px auto;
   color: #373737;
@@ -204,7 +204,12 @@ body {
 	transition: .5s;
 }
 
-.reg-a:hover {
+.signup-a:hover {
 	color: black;
 	transition: .5s;
+}
+
+.notes {
+	position: absolute;
+	z-index: 999;
 }

@@ -1,101 +1,3 @@
-<?php
-
-require "db.php";
-
-$data = $_POST;
-
-if ( isset($data['do_signup']) ) {
-	// тут реєструєм
-
-	$errors = array();
-	if ( trim($data['login_signup']) == '' ) {
-		$errors[] = 'Введіть логін!';
-	}
-
-	if ( trim($data['name_signup']) == '' ) {
-		$errors[] = "Введіть ім'я!";
-	}
-
-	if ( trim($data['surname_signup']) == '' ) {
-		$errors[] = "Введіть прізвище!";
-	}
-
-	if ( $data['password_signup'] == '' ) {
-		$errors[] = "Введіть пароль!";
-	}
-
-	if ( trim($data['email_signup']) == '' ) {
-		$errors[] = "Введіть Email!";
-	}
-
-	if ( R::count('users', "login = ?", array($data['login_signup'])) > 0 )  {
-		$errors[] = 'Користувач з таким логіном вже існує!';
-	}
-
-	if ( R::count('users', "email = ?", array($data['email_signup'])) > 0 )  {
-		$errors[] = 'Користувач з таким Email вже існує!';
-	}
-
-  if ( empty($errors) ) {
-		$user = R::dispense('users');
-		$user->login = $data['login_signup'];
-		$user->name = $data['name_signup'];
-		$user->surname = $data['surname_signup'];
-		$user->password = password_hash($data['password_signup'], PASSWORD_DEFAULT);
-		$user->email = $data['email_signup'];
-		R::store($user);
-		echo "ok";
-	}
-
-	else {
-		echo array_shift($errors);
-	}
-}
-
-// Login
-
-if ( isset($data['do_login']) ) {
-	$user = R::findOne('users', 'login = ?', array($data['login']));
-	if ( $user ) {
-
-	if ( password_verify($data['password'], $user->password) ) {
-		$_SESSION['logged_user'] = $user;
-     echo "ok";
-	} else {
-		$errors[] = 'Пароль введений невірно!';
-	}
-
-	}
-
-	else {
-		$errors[] = 'Користувача з таким логіном не знайднно!';
-	}
-
-	if ( ! empty($errors) ) {
-		  echo array_shift($errors);
-	}
-
-}
-
- ?>
-<?php
- if ( isset($_SESSION['logged_user']) ) : ?>
-
-<div class="notes">
-
-Авторизований. Привіт, <?php echo $_SESSION['logged_user']->name; ?>!
-<hr>
-<br>
-<a href="/logout.php">Вийти</a>
-</div>
-<?php else : ?>
-	<div class="notes">
-	Неавторизований
-	<br>
-  <a href="/index.php">Головна</a>
-</div>
-<?php endif; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,6 +14,7 @@ if ( isset($data['do_login']) ) {
    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 </head>
 <body>
+
 <div class="w-fon"></div>
 	<div class="window-signup-wraper">
 		<div class="window-signup">
@@ -120,30 +23,35 @@ if ( isset($data['do_login']) ) {
 
 			<p class="header">Реєстрація</p>
 
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="signup" method="POST">
+       <div class="form">
 
 				<div class="inf">
 
 				<p><label for="">Логін:</label></p>
-				<input type="login" name="login_signup" value="<?php echo $data['login_signup']; ?>">
+				<input type="login" name="login_signup" id='login_signup' value="<?php echo $data['login_signup']; ?>">
+				<div id='login_signup_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				<p><label for="">Ваше Ім'я:</label></p>
-        <input type="text" name="name_signup" value="<?php echo $data['name_signup']; ?>">
+        <input id="name_signup" type="text" name="name_signup" value="<?php echo $data['name_signup']; ?>">
+				<div id='name_signup_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				<p><label for="">Ваше прізвище:</label></p>
-				<input type="text" name="surname_signup" value="<?php echo $data['surname_signup']; ?>">
+				<input id='surname_signup' type="text" name="surname_signup" value="<?php echo $data['surname_signup']; ?>">
+				<div id='surname_signup_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				<p><label for="">Пароль:</label></p>
-				<input type="password" name="password_signup" value="<?php echo $data['password_signup']; ?>">
+				<input id="password_signup" type="password" name="password_signup" value="<?php echo $data['password_signup']; ?>" placeholder="Не менше 6 символів" class="password_signup">
+				<div id='password_signup_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				<p><label for="">Email:</label></p>
-				<input type="email" name="email_signup" value="<?php echo $data['email_signup']; ?>">
+				<input id="email_signup" type="email" name="email_signup" value="<?php echo $data['email_signup']; ?>" placeholder="example@dviinya.club">
+				<div id='email_signup_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
-				</div>
+			</div>
 
-				<input type="submit" name="do_signup" value="Зареєструватися">
+				<input type="submit" name="do_signup" value="Зареєструватися" id="do_signup">
 
-      </form>
+     </div>
 
 		</div>
 	</div>
@@ -155,24 +63,24 @@ if ( isset($data['do_login']) ) {
 
 			<i class="fa fa-times" aria-hidden="true" id="exit-close"></i>
 
-			<p class="header">Вхід</p>
+      <p class="header">Вхід</p>
 
-			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="exit" method="POST">
+         <div class="form">
 
 				<div class="inf">
 
 				<p><label for="login">Логін:</label></p>
 				<input type="login" name="login" id="login">
+				<div id='login_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				<p><label for="password">Пароль:</label></p>
 				<input type="password" name="password" id="password">
+				<div id='password_status'><div id="check_icon"></div><div id="cross_icon"></div></div>
 
 				</div>
 
-				<input type="submit" name="do_login" value="Ввійти">
-
-			</form>
-
+				<input type="submit" id="do_login" name="do_login" value="Ввійти">
+			</div>
       <p class="signup-a">Реєстрація</p>
 
 		</div>
@@ -434,6 +342,8 @@ if ( isset($data['do_login']) ) {
 <script src="slick/slick.min.js"></script>
 <script src="js/sl-script.js"></script>
 <script src="js/popups.js"></script>
+<script src="js/signup.js"></script>
+<script src="js/login.js"></script>
 
 </body>
 </html>

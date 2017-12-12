@@ -1,0 +1,91 @@
+<?php
+
+require "db.php";
+
+$data = $_POST;
+
+if ( isset($data['do_signup']) ) {
+	// тут реєструєм
+
+	$errors = array();
+	if ( trim($data['login_signup']) == '' ) {
+		$errors[] = 'Введіть логін!';
+	}
+
+	if ( trim($data['name_signup']) == '' ) {
+		$errors[] = "Введіть ім'я!";
+	}
+
+	if ( trim($data['surname_signup']) == '' ) {
+		$errors[] = "Введіть прізвище!";
+	}
+
+	if ( $data['password_signup'] == '' ) {
+		$errors[] = "Введіть пароль!";
+	}
+
+	if ( count($data['password_signup']) < 6 ) {
+ 		$errors[] = 'Пароль повинен містити не менше 6 символів!';
+	}
+
+	if ( trim($data['email_signup']) == '' ) {
+		$errors[] = "Введіть Email!";
+	}
+
+	if ( R::count('users', "login = ?", array($data['login_signup'])) > 0 )  {
+		$errors[] = 'Користувач з таким логіном вже існує!';
+	}
+
+	if ( R::count('users', "email = ?", array($data['email_signup'])) > 0 )  {
+		$errors[] = 'Користувач з таким Email вже існує!';
+	}
+
+  if ( empty($errors) ) {
+		$user = R::dispense('users');
+		$user->login = $data['login_signup'];
+		$user->name = $data['name_signup'];
+		$user->surname = $data['surname_signup'];
+		$user->password = password_hash($data['password_signup'], PASSWORD_DEFAULT);
+		$user->email = $data['email_signup'];
+		R::store($user);
+		echo "ok";
+	}
+
+	else {
+		echo array_shift($errors);
+	}
+}
+
+// Login
+
+if ( isset($data['do_login']) ) {
+	$user = R::findOne('users', 'login = ?', array($data['login']));
+	if ( $user ) {
+
+	if ( password_verify($data['password'], $user->password) ) {
+		$_SESSION['logged_user'] = $user;
+     echo "ok";
+	} else {
+		$errors[] = 'Пароль введений невірно!';
+	}
+
+	}
+
+	else {
+		$errors[] = 'Користувача з таким логіном не знайднно!';
+	}
+
+	if ( ! empty($errors) ) {
+		  echo array_shift($errors);
+	}
+
+}
+
+ ?>
+<?php
+ if ( isset($_SESSION['logged_user']) ) : ?>
+
+
+<?php else : ?>
+
+<?php endif; ?> 
